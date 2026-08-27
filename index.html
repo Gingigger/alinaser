@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Ali Naser engineering portfolio introduction">
+<meta name="theme-color" content="#050d0a">
+<meta property="og:title" content="Ali Naser — Engineering Portfolio">
+<meta property="og:description" content="Telecommunications, embedded systems, IoT projects, credentials, and engineering work.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ali-naser-portfolio.bali0411.chatgpt.site/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ali Naser — Engineering Portfolio">
+<meta name="twitter:description" content="Telecommunications, embedded systems, IoT projects, credentials, and engineering work.">
+<meta name="twitter:image" content="https://ali-naser-portfolio.bali0411.chatgpt.site/og.png">
+<title>Ali Naser — Engineering Portfolio Intro</title>
+<style>
+:root{
+  --bg:#050d0a;
+  --bg2:#08130f;
+  --panel:#081711;
+  --panel2:#0b1d16;
+  --line:rgba(155,240,196,.13);
+  --line2:rgba(155,240,196,.23);
+  --text:#ebf8f1;
+  --muted:#7f9b8d;
+  --green:#8be4b4;
+  --green2:#b7f5d5;
+  --hot:#52ff9c;
+  --amber:#dcb66d;
+  --red:#e27f78;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI",sans-serif;
+  overflow:hidden;
+}
+button{font:inherit}
+.stage{
+  position:fixed;inset:0;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(82,255,156,.045), transparent 32%),
+    linear-gradient(180deg,#050d0a,#07110d 68%,#040806);
+  transition:opacity .55s ease,visibility .55s ease;
+}
+.stage.done{opacity:0;visibility:hidden;pointer-events:none}
+.grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(139,228,180,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(139,228,180,.028) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:radial-gradient(circle at center,black 38%,transparent 92%);
+}
+.scope-grid{
+  position:absolute;inset:0;opacity:.22;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(139,228,180,.028) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(139,228,180,.028) 1px, transparent 1px);
+  background-size:8px 8px;
+  mask-image:linear-gradient(to bottom,transparent 0,black 8%,black 28%,transparent 36%);
+}
+.vignette{position:absolute;inset:0;box-shadow:inset 0 0 220px rgba(0,0,0,.82);pointer-events:none}
+
+.topbar{
+  position:absolute;left:20px;right:20px;top:16px;height:28px;
+  display:flex;justify-content:space-between;align-items:center;
+  color:#607d70;font:600 9px "SFMono-Regular",Consolas,monospace;
+  letter-spacing:.12em;text-transform:uppercase;
+  opacity:0;animation:fade .2s .08s forwards;
+}
+.status-led{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;background:#244236}
+.status-led.on{animation:led .55s .15s forwards}
+@keyframes led{
+  40%{background:var(--hot);box-shadow:0 0 14px rgba(82,255,156,.9)}
+  100%{background:#43ce7f;box-shadow:0 0 7px rgba(82,255,156,.5)}
+}
+@keyframes fade{to{opacity:1}}
+
+.layout{
+  position:absolute;left:20px;right:20px;top:52px;bottom:38px;
+  display:grid;
+  grid-template-columns:240px minmax(420px,1fr) 270px;
+  grid-template-rows:136px 1fr 126px;
+  gap:10px;
+  opacity:0;animation:fade .25s .18s forwards;
+}
+.panel{
+  position:relative;
+  border:1px solid var(--line);
+  background:rgba(5,18,13,.72);
+  backdrop-filter:blur(7px);
+  overflow:hidden;
+}
+.panel::before{
+  content:"";position:absolute;left:0;top:0;width:70px;height:1px;
+  background:linear-gradient(90deg,var(--green),transparent);
+}
+.hd{
+  height:25px;padding:7px 9px 0;
+  color:#6e8d7d;font:600 8px "SFMono-Regular",Consolas,monospace;
+  letter-spacing:.14em;text-transform:uppercase;
+  border-bottom:1px solid rgba(155,240,196,.07);
+}
+.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+.small{font-size:9px}
+.tiny{font-size:8px}
+.green{color:var(--green)}
+.hot{color:var(--hot)}
+.amber{color:var(--amber)}
+.muted{color:var(--muted)}
+
+.power{grid-column:1;grid-row:1}
+.boot{grid-column:1;grid-row:2}
+.center{grid-column:2;grid-row:1/3}
+.rf{grid-column:3;grid-row:1}
+.stack{grid-column:3;grid-row:2}
+.scope{grid-column:1/4;grid-row:3}
+
+.rows{padding:8px 9px;display:grid;gap:4px}
+.row{display:grid;grid-template-columns:82px 1fr;gap:7px;color:#739184}
+.row b{font-weight:500;color:#b0cabd}
+.row.good b{color:var(--green2)}
+.row .bar{
+  height:3px;background:#10291e;align-self:center;position:relative;overflow:hidden
+}
+.row .bar i{display:block;height:100%;width:0;background:var(--green);box-shadow:0 0 8px rgba(82,255,156,.35)}
+.b1 i{animation:bar 1s .35s forwards}.b2 i{animation:bar .9s .48s forwards}.b3 i{animation:bar .8s .6s forwards}
+@keyframes bar{to{width:100%}}
+
+.console{
+  padding:8px 9px;color:#718f80;font:500 9px/1.48 "SFMono-Regular",Consolas,monospace
+}
+.cl{opacity:0;transform:translateY(2px)}
+.c1{animation:term .15s .25s forwards}.c2{animation:term .15s .40s forwards}.c3{animation:term .15s .55s forwards}
+.c4{animation:term .15s .70s forwards}.c5{animation:term .15s .85s forwards}.c6{animation:term .15s 1.00s forwards}
+.c7{animation:term .15s 1.15s forwards}.c8{animation:term .15s 1.30s forwards}.c9{animation:term .15s 1.45s forwards}
+.c10{animation:term .15s 1.60s forwards}.c11{animation:term .15s 1.75s forwards}
+@keyframes term{to{opacity:1;transform:none}}
+
+.center-svg{width:100%;height:calc(100% - 25px);display:block}
+.trace{
+  fill:none;stroke:rgba(139,228,180,.20);stroke-width:1.1;
+  stroke-dasharray:900;stroke-dashoffset:900;
+}
+.tr1{animation:trace 1.2s .30s forwards}.tr2{animation:trace 1.2s .38s forwards}
+.tr3{animation:trace 1.2s .46s forwards}.tr4{animation:trace 1.2s .54s forwards}
+.tr5{animation:trace 1.2s .62s forwards}.tr6{animation:trace 1.2s .70s forwards}
+.tr7{animation:trace 1.2s .78s forwards}.tr8{animation:trace 1.2s .86s forwards}
+@keyframes trace{to{stroke-dashoffset:0}}
+
+.block{
+  fill:#071810;stroke:rgba(139,228,180,.28);stroke-width:1;
+  opacity:0;animation:block .23s forwards;
+}
+.bl1{animation-delay:.75s}.bl2{animation-delay:.87s}.bl3{animation-delay:.99s}.bl4{animation-delay:1.11s}
+.bl5{animation-delay:1.23s}.bl6{animation-delay:1.35s}.bl7{animation-delay:1.47s}.bl8{animation-delay:1.59s}
+@keyframes block{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+.label{
+  fill:#7c9b8c;font:600 8px "SFMono-Regular",Consolas,monospace;letter-spacing:.08em;
+  opacity:0;animation:fade .2s 1.18s forwards
+}
+.label2{
+  fill:#b0cbbd;font:600 10px "SFMono-Regular",Consolas,monospace;
+  opacity:0;animation:fade .2s 1.30s forwards
+}
+.packet{
+  fill:var(--hot);filter:drop-shadow(0 0 8px rgba(82,255,156,.85));
+  opacity:0
+}
+.p1{
+  offset-path:path("M35 210 C120 210 130 165 205 165 S290 165 340 165");
+  animation:packet 1.0s 1.45s ease-in-out forwards
+}
+.p2{
+  offset-path:path("M340 165 C405 165 430 105 505 105 S570 105 610 105");
+  animation:packet 1.0s 1.86s ease-in-out forwards
+}
+.p3{
+  offset-path:path("M340 165 C415 165 430 250 505 250 S570 250 610 250");
+  animation:packet 1.0s 2.18s ease-in-out forwards
+}
+@keyframes packet{
+  0%{offset-distance:0%;opacity:0}
+  8%{opacity:1}
+  92%{opacity:1}
+  100%{offset-distance:100%;opacity:0}
+}
+
+.bus{
+  stroke:rgba(139,228,180,.13);stroke-width:6;fill:none
+}
+.pin{
+  stroke:rgba(139,228,180,.32);stroke-width:1
+}
+
+.rfbody{padding:8px 9px}
+.rfmetrics{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;font:500 8.5px/1.4 "SFMono-Regular",Consolas,monospace;color:#718f80}
+.rfmetrics b{color:#acc9ba;font-weight:500}
+.spectrum{width:100%;height:34px;margin-top:5px}
+.spec-base{stroke:rgba(139,228,180,.12);stroke-width:1}
+.spec{
+  fill:none;stroke:var(--green);stroke-width:1.2;stroke-dasharray:260;stroke-dashoffset:260;
+  filter:drop-shadow(0 0 4px rgba(82,255,156,.25));
+  animation:trace .75s 1.20s forwards
+}
+
+.layers{padding:8px 9px;display:grid;gap:4px}
+.layer{
+  display:grid;grid-template-columns:35px 1fr 34px;gap:6px;align-items:center;
+  padding:4px 5px;border:1px solid rgba(139,228,180,.08);
+  color:#779486;font:600 8px "SFMono-Regular",Consolas,monospace;
+  opacity:0;transform:translateX(5px)
+}
+.lay1{animation:layer .18s 1.35s forwards}.lay2{animation:layer .18s 1.48s forwards}
+.lay3{animation:layer .18s 1.61s forwards}.lay4{animation:layer .18s 1.74s forwards}
+.lay5{animation:layer .18s 1.87s forwards}.lay6{animation:layer .18s 2.00s forwards}
+@keyframes layer{to{opacity:1;transform:none}}
+.layer strong{color:#aac8b8;font-weight:500}
+.layer em{font-style:normal;color:var(--green);text-align:right}
+.handshake{
+  padding:3px 9px 0;color:#6c887a;font:500 8px/1.45 "SFMono-Regular",Consolas,monospace
+}
+.hline{opacity:0}
+.h1{animation:fade .14s 2.04s forwards}.h2{animation:fade .14s 2.18s forwards}.h3{animation:fade .14s 2.32s forwards}
+.h4{animation:fade .14s 2.46s forwards}.h5{animation:fade .14s 2.60s forwards}
+
+.scopebody{height:calc(100% - 25px);display:grid;grid-template-columns:1fr 220px 220px;gap:12px;padding:7px 9px}
+.osc{width:100%;height:75px}
+.oscbase{stroke:rgba(139,228,180,.10);stroke-width:1}
+.oscline{
+  fill:none;stroke:var(--hot);stroke-width:1.35;stroke-dasharray:1000;stroke-dashoffset:1000;
+  filter:drop-shadow(0 0 5px rgba(82,255,156,.42));
+  animation:scope 1.0s 1.55s forwards
+}
+@keyframes scope{to{stroke-dashoffset:0}}
+.constellation{position:relative;border-left:1px solid rgba(139,228,180,.08);padding-left:10px}
+.constellation svg{width:100%;height:70px}
+.axis{stroke:rgba(139,228,180,.12);stroke-width:1}
+.dot{fill:var(--green);opacity:0;filter:drop-shadow(0 0 3px rgba(82,255,156,.5))}
+.d1{animation:fade .1s 1.80s forwards}.d2{animation:fade .1s 1.88s forwards}.d3{animation:fade .1s 1.96s forwards}.d4{animation:fade .1s 2.04s forwards}
+.telemetry{border-left:1px solid rgba(139,228,180,.08);padding-left:10px;font:500 8px/1.5 "SFMono-Regular",Consolas,monospace;color:#728e80}
+.telemetry div{display:flex;justify-content:space-between;gap:8px}
+.telemetry b{font-weight:500;color:#a9c6b7}
+
+.identity{
+  position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;text-align:center;
+  opacity:0;pointer-events:none;animation:identity .48s 2.82s forwards
+}
+@keyframes identity{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+.identity::before{
+  content:"";position:absolute;inset:0;background:rgba(4,11,8,.78);backdrop-filter:blur(2px)
+}
+.idbox{position:relative;padding:33px 46px 30px;border-top:1px solid rgba(139,228,180,.18);border-bottom:1px solid rgba(139,228,180,.12)}
+.idmicro{
+  font:600 8px "SFMono-Regular",Consolas,monospace;letter-spacing:.18em;text-transform:uppercase;color:#6f8c7e
+}
+.identity h1{margin:8px 0 3px;font-size:clamp(44px,7vw,92px);line-height:.92;letter-spacing:-.055em;color:#f1fff7}
+.role{font-size:clamp(10px,1.3vw,15px);letter-spacing:.17em;text-transform:uppercase;color:#a1c5b3}
+.specs{margin-top:12px;font:500 8px "SFMono-Regular",Consolas,monospace;letter-spacing:.08em;color:#789286}
+.launch{margin-top:15px;font:500 10px "SFMono-Regular",Consolas,monospace;color:var(--green)}
+.cursor{display:inline-block;width:6px;height:12px;background:var(--green);vertical-align:-2px;margin-left:3px;animation:blink .5s infinite}
+@keyframes blink{50%{opacity:0}}
+.skip{
+  position:absolute;right:18px;bottom:8px;z-index:30;
+  background:none;border:0;color:#617d70;padding:8px 10px;
+  font:600 8px "SFMono-Regular",Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;cursor:pointer
+}
+.skip:hover{color:var(--green)}
+
+.mock{
+  position:fixed;inset:0;background:#0b1712;color:#edf7f1;
+  display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .5s ease
+}
+.mock.show{opacity:1;visibility:visible}
+.mock-inner{width:min(940px,90vw);display:grid;grid-template-columns:1.3fr .7fr;gap:45px;border-top:1px solid rgba(139,228,180,.16);padding-top:24px}
+.mock .k{font:600 9px "SFMono-Regular",Consolas,monospace;text-transform:uppercase;letter-spacing:.14em;color:#779886}
+.mock h2{font-size:clamp(42px,6vw,72px);letter-spacing:-.045em;line-height:.98;margin:10px 0 14px}
+.mock p{color:#93aa9e;line-height:1.7}
+.side{border-left:1px solid rgba(139,228,180,.1);padding-left:20px;font:500 10px/1.85 "SFMono-Regular",Consolas,monospace;color:#748b7f}
+.replay{margin-top:16px;padding:9px 13px;background:transparent;color:#9fcab3;border:1px solid rgba(139,228,180,.20);cursor:pointer}
+.replay:hover{border-color:rgba(139,228,180,.48);color:#e0f7eb}
+
+@media(max-width:900px){
+  .layout{grid-template-columns:190px 1fr;grid-template-rows:130px 1fr 110px}
+  .rf{display:none}.stack{grid-column:1;grid-row:2}.boot{display:none}
+  .power{grid-column:1;grid-row:1}.center{grid-column:2;grid-row:1/3}
+  .scope{grid-column:1/3;grid-row:3}
+  .scopebody{grid-template-columns:1fr 160px}.telemetry{display:none}
+}
+@media(max-width:640px){
+  .layout{left:8px;right:8px;top:45px;bottom:30px;grid-template-columns:1fr;grid-template-rows:1fr 110px}
+  .power,.stack{display:none}.center{grid-column:1;grid-row:1}.scope{grid-column:1;grid-row:2}
+  .scopebody{grid-template-columns:1fr}.constellation{display:none}
+  .topbar{left:10px;right:10px}.idbox{padding-inline:16px}.specs{line-height:1.7}
+  .mock-inner{grid-template-columns:1fr}.side{border-left:0;border-top:1px solid rgba(139,228,180,.1);padding:16px 0 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-delay:0ms!important}
+}
+.noscript-link{position:fixed;z-index:100;inset:0;display:grid;place-items:center;background:#050d0a;color:#9ef0c2;font:600 15px ui-monospace,monospace}
+</style>
+</head>
+<body>
+<noscript><a class="noscript-link" href="portfolio.html">Open Ali Naser's portfolio</a></noscript>
+
+<section class="mock" id="mock">
+  <div class="mock-inner">
+    <div>
+      <div class="k">Engineering portfolio interface</div>
+      <h2>Engineering systems that sense, connect, and respond.</h2>
+      <p>Embedded systems, telecommunications, IoT, and practical engineering work.</p>
+      <button class="replay" id="replay">Replay engineering boot</button>
+    </div>
+    <div class="side">
+      SESSION&nbsp;&nbsp;&nbsp;ESTABLISHED<br>
+      NODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AN-01<br>
+      PHY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;802.11<br>
+      LINK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACTIVE<br>
+      HTTP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;200 OK
+    </div>
+  </div>
+</section>
+
+<section class="stage" id="stage">
+  <div class="grid"></div>
+  <div class="scope-grid"></div>
+  <div class="vignette"></div>
+
+  <div class="topbar">
+    <span><i class="status-led on"></i>AN ENGINEERING TERMINAL / REV 02</span>
+    <span>SIMULATED SYSTEM TELEMETRY · 2026</span>
+  </div>
+
+  <div class="layout">
+
+    <section class="panel power">
+      <div class="hd">Power / clock domain</div>
+      <div class="rows mono tiny">
+        <div class="row good"><span>VBUS</span><b>5.02 V</b></div>
+        <div class="row good"><span>LDO_3V3</span><b>3.301 V</b></div>
+        <div class="row good"><span>BROWNOUT</span><b>PASS</b></div>
+        <div class="row"><span>XTAL</span><b>40.000 MHz</b></div>
+        <div class="row"><span>PLL</span><b>LOCK / 240 MHz</b></div>
+        <div class="row"><span>RAIL</span><div class="bar b1"><i></i></div></div>
+      </div>
+    </section>
+
+    <section class="panel boot">
+      <div class="hd">Boot ROM / peripheral enumeration</div>
+      <div class="console">
+        <div class="cl c1">ROM: reset vector 0x40000400</div>
+        <div class="cl c2">FLASH: mapping segments... <span class="green">OK</span></div>
+        <div class="cl c3">HEAP: 284 kB available</div>
+        <div class="cl c4">GPIO: matrix initialized</div>
+        <div class="cl c5">I2C0: scan bus @ 400 kHz</div>
+        <div class="cl c6">I2C0: device <span class="green">0x3C</span> ACK</div>
+        <div class="cl c7">ADC1: 12-bit / calibrated</div>
+        <div class="cl c8">UART0: 115200 8N1</div>
+        <div class="cl c9">SPI2: mode 0 / ready</div>
+        <div class="cl c10">WDT: armed / 5.0 s</div>
+        <div class="cl c11">&gt; peripheral self-test <span class="hot">PASS</span></div>
+      </div>
+    </section>
+
+    <section class="panel center">
+      <div class="hd">System architecture / signal path</div>
+      <svg class="center-svg" viewBox="0 0 650 330" aria-label="Engineering signal path diagram">
+        <path class="bus" d="M250 165 H400"/>
+        <path class="trace tr1" d="M35 70 H130 Q155 70 155 95 V145 H250"/>
+        <path class="trace tr2" d="M35 155 H120 Q145 155 160 165 H250"/>
+        <path class="trace tr3" d="M35 250 H135 Q160 250 175 225 L225 185 H250"/>
+        <path class="trace tr4" d="M325 35 V110"/>
+        <path class="trace tr5" d="M325 295 V220"/>
+        <path class="trace tr6" d="M400 165 H485 Q510 165 510 125 V105 H610"/>
+        <path class="trace tr7" d="M400 165 H485 Q510 165 510 205 V250 H610"/>
+        <path class="trace tr8" d="M400 165 H460 Q485 165 500 180 L560 210"/>
+
+        <rect class="block bl1" x="20" y="45" width="112" height="50" rx="2"/>
+        <rect class="block bl2" x="20" y="130" width="112" height="50" rx="2"/>
+        <rect class="block bl3" x="20" y="225" width="112" height="50" rx="2"/>
+        <rect class="block bl4" x="250" y="110" width="150" height="110" rx="3"/>
+        <rect class="block bl5" x="270" y="45" width="110" height="42" rx="2"/>
+        <rect class="block bl6" x="270" y="245" width="110" height="42" rx="2"/>
+        <rect class="block bl7" x="518" y="75" width="112" height="60" rx="2"/>
+        <rect class="block bl8" x="518" y="220" width="112" height="60" rx="2"/>
+
+        <text class="label2" x="45" y="68">SENSOR BUS</text>
+        <text class="label" x="45" y="82">ANALOG / DIGITAL</text>
+
+        <text class="label2" x="45" y="153">ADC / INPUT</text>
+        <text class="label" x="45" y="167">12-BIT SAMPLE</text>
+
+        <text class="label2" x="45" y="248">USER I/O</text>
+        <text class="label" x="45" y="262">OLED / ALERT</text>
+
+        <text class="label2" x="290" y="150">MCU / CONTROL CORE</text>
+        <text class="label" x="290" y="168">240 MHz · GPIO MATRIX</text>
+        <text class="label" x="290" y="183">STATE MACHINE · ISR</text>
+
+        <text class="label2" x="294" y="69">MEMORY</text>
+        <text class="label" x="294" y="80">FLASH / SRAM</text>
+
+        <text class="label2" x="294" y="268">SERIAL BUS</text>
+        <text class="label" x="294" y="279">UART · I²C · SPI</text>
+
+        <text class="label2" x="540" y="100">RF PHY</text>
+        <text class="label" x="540" y="114">2.437 GHz</text>
+
+        <text class="label2" x="537" y="246">NETWORK</text>
+        <text class="label" x="537" y="260">TCP/IP · TLS</text>
+
+        <text class="label" x="420" y="151">DATA BUS</text>
+        <text class="label" x="517" y="188">PACKET</text>
+
+        <circle class="packet p1" r="4"/>
+        <circle class="packet p2" r="4"/>
+        <circle class="packet p3" r="4"/>
+      </svg>
+    </section>
+
+    <section class="panel rf">
+      <div class="hd">RF / access point</div>
+      <div class="rfbody">
+        <div class="rfmetrics">
+          <span>SSID</span><b>AN_ENGINEERING</b>
+          <span>CH</span><b>06 / 2.437 GHz</b>
+          <span>BW</span><b>20 MHz</b>
+          <span>RSSI</span><b>-42 dBm</b>
+          <span>SNR</span><b>36 dB</b>
+          <span>MCS</span><b>OFDM</b>
+        </div>
+        <svg class="spectrum" viewBox="0 0 250 40" preserveAspectRatio="none">
+          <line class="spec-base" x1="0" y1="34" x2="250" y2="34"/>
+          <path class="spec" d="M0 34 L28 34 Q38 34 44 30 Q58 21 72 18 Q91 10 110 8 Q125 7 140 8 Q160 10 178 18 Q194 25 206 31 Q214 34 250 34"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <div class="hd">Protocol stack / session establishment</div>
+      <div class="layers">
+        <div class="layer lay1"><span>L1</span><strong>PHY / 802.11</strong><em>LOCK</em></div>
+        <div class="layer lay2"><span>L2</span><strong>MAC / ASSOCIATED</strong><em>OK</em></div>
+        <div class="layer lay3"><span>L3</span><strong>IPv4 / 192.0.2.27</strong><em>UP</em></div>
+        <div class="layer lay4"><span>L4</span><strong>TCP / PORT 443</strong><em>SYN</em></div>
+        <div class="layer lay5"><span>L5</span><strong>TLS 1.3</strong><em>KEY</em></div>
+        <div class="layer lay6"><span>L7</span><strong>HTTP/2 / PORTFOLIO</strong><em>200</em></div>
+      </div>
+      <div class="handshake">
+        <div class="hline h1">DHCP DISCOVER → OFFER → REQUEST → ACK</div>
+        <div class="hline h2">ARP: 192.0.2.1 is-at 02:1A:4E:27:20:26</div>
+        <div class="hline h3">TCP: SYN → SYN/ACK → ACK</div>
+        <div class="hline h4">TLS: client_hello → server_hello → keys</div>
+        <div class="hline h5">GET /portfolio → <span class="green">HTTP 200 OK</span></div>
+      </div>
+    </section>
+
+    <section class="panel scope">
+      <div class="hd">Oscilloscope / modulation / runtime telemetry</div>
+      <div class="scopebody">
+        <svg class="osc" viewBox="0 0 800 80" preserveAspectRatio="none">
+          <line class="oscbase" x1="0" y1="40" x2="800" y2="40"/>
+          <line class="oscbase" x1="200" y1="0" x2="200" y2="80"/>
+          <line class="oscbase" x1="400" y1="0" x2="400" y2="80"/>
+          <line class="oscbase" x1="600" y1="0" x2="600" y2="80"/>
+          <path class="oscline" d="M0 40 L55 40 L70 12 L90 68 L110 40 L165 40 L180 12 L200 68 L220 40 L275 40 L290 12 L310 68 L330 40 L385 40 L400 12 L420 68 L440 40 L495 40 L510 12 L530 68 L550 40 L605 40 L620 12 L640 68 L660 40 L715 40 L730 12 L750 68 L770 40 L800 40"/>
+        </svg>
+
+        <div class="constellation">
+          <div class="tiny muted mono">QPSK CONSTELLATION</div>
+          <svg viewBox="0 0 100 70">
+            <line class="axis" x1="50" y1="4" x2="50" y2="66"/>
+            <line class="axis" x1="5" y1="35" x2="95" y2="35"/>
+            <circle class="dot d1" cx="30" cy="18" r="3"/>
+            <circle class="dot d2" cx="70" cy="18" r="3"/>
+            <circle class="dot d3" cx="30" cy="52" r="3"/>
+            <circle class="dot d4" cx="70" cy="52" r="3"/>
+          </svg>
+        </div>
+
+        <div class="telemetry">
+          <div><span>VCC</span><b>3.301 V</b></div>
+          <div><span>CLK</span><b>240 MHz</b></div>
+          <div><span>ADC</span><b>12-bit</b></div>
+          <div><span>UART</span><b>115200 8N1</b></div>
+          <div><span>PKT RX</span><b>000128</b></div>
+          <div><span>CRC</span><b class="green">PASS</b></div>
+          <div><span>RTT</span><b>8 ms</b></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="identity">
+    <div class="idbox">
+      <div class="idmicro">NODE AN-01 · MAC 02:1A:4E:27:20:26 · IP 192.0.2.27 · LINK ESTABLISHED</div>
+      <h1>ALI NASER</h1>
+      <div class="role">Communications & Electronics Engineering</div>
+      <div class="specs">EMBEDDED SYSTEMS · RF / TELECOM · IoT · ELECTRONICS · NETWORKING</div>
+      <div class="launch">&gt; launch portfolio_<span class="cursor"></span></div>
+    </div>
+  </section>
+
+  <button class="skip" id="skip">Skip intro ↗</button>
+</section>
+
+<script>
+const stage = document.getElementById('stage');
+const mock = document.getElementById('mock');
+const skip = document.getElementById('skip');
+const replay = document.getElementById('replay');
+
+let navigating = false;
+function finish(){
+  if(navigating) return;
+  navigating = true;
+  stage.classList.add('done');
+  setTimeout(()=>window.top.location.replace('portfolio.html'),420);
+}
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const timer = setTimeout(finish, reducedMotion ? 180 : 3950);
+skip.addEventListener('click',()=>{clearTimeout(timer);finish();});
+replay?.addEventListener('click',()=>{location.reload();});
+</script>
+</body>
+</html>
